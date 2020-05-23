@@ -95,7 +95,7 @@ def setStatus(value){
     def _value = (switchBaseValue == value ? "on" : "off")
 
     if(device.currentValue("switch") != _value){
-        sendEvent(name: (_value == "on" ? "lastOn" : "lastOff"), value: now, displayed: false )
+        sendEvent(name: (_value == "on" ? "lastOn" : "lastOff"), value: now, displayed: true )
     }
     sendEvent(name: "switch", value:_value)
     sendEvent(name: "lastCheckin", value: new Date().format("yyyy-MM-dd HH:mm:ss", location.timeZone), displayed: false)
