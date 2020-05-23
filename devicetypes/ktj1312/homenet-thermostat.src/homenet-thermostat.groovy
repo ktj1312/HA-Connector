@@ -129,6 +129,7 @@ def generateModeEvent(mode) {
             value: mode,
             data:["off","auto","away"],
             isStateChange: true,
+            displayed: true,
             descriptionText: "$device.displayName is in ${mode} mode")
 
 }
@@ -150,8 +151,8 @@ def setStatus(value){
     log.debug "Status[${state.entity_id}] >> ${value}"
 
     switchToMode(value.state)
-    sendEvent(name: "heatingSetpoint", value: value.set_temp)
-    sendEvent(name: "temperature", value: value.current_temp )
+    sendEvent(name: "heatingSetpoint", value: value.set_temp, displayed: true)
+    sendEvent(name: "temperature", value: value.current_temp , displayed: true)
 }
 
 def setHASetting(url, deviceId){
